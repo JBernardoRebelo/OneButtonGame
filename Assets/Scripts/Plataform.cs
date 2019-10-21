@@ -23,6 +23,8 @@ public class Plataform : MonoBehaviour
     {
         _anim = GetComponent<Animator>();
         _hasPlayerBeen = false;
+
+        _anim.SetBool("Die", true);
     }
 
     private void FixedUpdate()
@@ -30,7 +32,6 @@ public class Plataform : MonoBehaviour
         if (CheckPlayer())
         {
             DestroyPlataform();
-
         }
     }
 
