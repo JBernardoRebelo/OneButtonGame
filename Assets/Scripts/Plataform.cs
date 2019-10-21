@@ -7,7 +7,6 @@ public class Plataform : MonoBehaviour
 {
     private Animator _anim;
     private bool _hasPlayerBeen;
-    private Coroutine _destroyRoutine;
 
     public bool HasPlayer
     {
@@ -24,15 +23,15 @@ public class Plataform : MonoBehaviour
     {
         _anim = GetComponent<Animator>();
         _hasPlayerBeen = false;
-
-        _destroyRoutine = StartCoroutine(DestroyPlatRoutine());
-
     }
 
     private void FixedUpdate()
     {
         if (CheckPlayer())
+        {
             DestroyPlataform();
+
+        }
     }
 
     private bool CheckPlayer()
@@ -45,35 +44,11 @@ public class Plataform : MonoBehaviour
 
     private void DestroyPlataform()
     {
-        _destroyRoutine = StartCoroutine(DestroyPlatRoutine());
-    }
-
-    private IEnumerator DestroyPlatRoutine()
-    {
         _anim.SetBool("Die", true);
-
-        yield return FadeOut();
-
-        StopCoroutine(_destroyRoutine);
-        Destroy(gameObject);
     }
 
-    private IEnumerator FadeOut()
+    public void DestroyObject()
     {
-        Material[] mats;
-        mats = gameObject.GetComponentInChildren<MeshRenderer>().materials;
-        
-        for(float f = 1f; f >= -0.05f; f -= 0.05f)
-        {
-            foreach (Material m in mats)
-            {
-                Color c = m.color;
-                c.a = f;
-
-                m.color = c;
-            }
-
-            yield return new WaitForSeconds(0.05f);
-        }
+        Destroy(gameObject);
     }
 }
