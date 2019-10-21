@@ -19,13 +19,18 @@ public class Map : MonoBehaviour
         _world = new Queue<Plataform>(5);
 
         Plataform plataform = Instantiate(_pltfrm, _offset, _tileRot);
+
+        plataform.transform.SetParent(transform);
+
         _world.Enqueue(plataform);
 
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 9; i++)
         {
-            _offset = new Vector3(0f, 0f, (i + 2));
+            _offset = new Vector3(0f, 0f, (2* i));
 
             plataform = Instantiate(_pltfrm, _offset, _tileRot);
+
+            plataform.transform.SetParent(transform);
 
             _world.Enqueue(plataform);
         }
