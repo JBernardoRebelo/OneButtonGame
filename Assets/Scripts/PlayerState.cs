@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IMovable
+public enum PlayerState
 {
-    void Move();
+    Sword,
+    Shield
 }
