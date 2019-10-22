@@ -6,11 +6,13 @@ using UnityEngine;
 public class Plataform : MonoBehaviour, ISpawnable, IMovable
 {
     [SerializeField] private GameObject[] _enemiesPrefab;
-    [SerializeField] [Range(0, 1f)] private float _speed;
+    [SerializeField] [Range(1, 5f)] private float _speed;
 
     private Animator _anim;
     private bool _hasPlayerBeen;
     private GameObject _spawnedEnemy;
+    private bool _move;
+    private float _time;
 
     public bool HasPlayer
     {
@@ -27,6 +29,8 @@ public class Plataform : MonoBehaviour, ISpawnable, IMovable
     {
         _anim = GetComponent<Animator>();
         _hasPlayerBeen = false;
+        _move = false;
+        Move();
     }
 
     private void FixedUpdate()
@@ -34,6 +38,18 @@ public class Plataform : MonoBehaviour, ISpawnable, IMovable
         if (CheckPlayer())
         {
             DestroyPlataform();
+        }
+
+        // Translate position to new position
+        if (_move)
+        {
+            if (_time > 0.01f)
+            {
+                transform.Translate(-Vector3.forward *_speed * Time.deltaTime);
+                _time -= Time.deltaTime;
+            }
+            else
+                _move = false;
         }
     }
 
@@ -63,14 +79,9 @@ public class Plataform : MonoBehaviour, ISpawnable, IMovable
         _spawnedEnemy.transform.SetParent(gameObject.transform);
     }
 
-    public void Move(int moveAmount = 1)
+    public void Move()
     {
-        Vector3 newPosition;
-
-        newPosition = transform.position;
-        newPosition.z = -2 * moveAmount;
-
-        transform.position = Vector3.Lerp(transform.position, newPosition, _speed);
+        _time = 2f / _speed;
+        _move = true;
     }
-
 }

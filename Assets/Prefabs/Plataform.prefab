@@ -45,7 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f27185e82a2edc346a713a62f4beb761, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 1
+  _enemiesPrefab: []
+  _speed: 0.14
 --- !u!95 &3631927407379989497
 Animator:
   serializedVersion: 3
