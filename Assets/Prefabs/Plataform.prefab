@@ -46,7 +46,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemiesPrefab: []
-  _speed: 0.14
+  _speed: 1
+  _playerDetectionRange: 1
 --- !u!95 &3631927407379989497
 Animator:
   serializedVersion: 3
@@ -60,7 +61,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 5dea9a4f57e0c9d4aa721aa66c8879cb, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1

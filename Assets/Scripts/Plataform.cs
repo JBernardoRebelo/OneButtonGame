@@ -7,6 +7,7 @@ public class Plataform : MonoBehaviour, ISpawnable, IMovable
 {
     [SerializeField] private GameObject[] _enemiesPrefab;
     [SerializeField] [Range(1, 5f)] private float _speed;
+    [SerializeField] private float _playerDetectionRange;
 
     private Animator _anim;
     private bool _hasPlayerBeen;
@@ -19,10 +20,17 @@ public class Plataform : MonoBehaviour, ISpawnable, IMovable
         get
         {
             Collider[] col = new Collider[2];
-            Physics.OverlapSphereNonAlloc(transform.position, 2, col, LayerMask.GetMask("Player"));
+            Physics.OverlapSphereNonAlloc(transform.position, _playerDetectionRange,
+                col, LayerMask.GetMask("Player"));
 
             return col[0];
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, _playerDetectionRange);
     }
 
     private void Start()

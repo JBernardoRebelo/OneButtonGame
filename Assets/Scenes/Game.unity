@@ -130,7 +130,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7117280}
   - component: {fileID: 7117281}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -426,28 +426,13 @@ GameObject:
   - component: {fileID: 1702713807}
   - component: {fileID: 1702713806}
   - component: {fileID: 1702713805}
-  - component: {fileID: 1702713804}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TestCube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1702713804
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1702713803}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f27185e82a2edc346a713a62f4beb761, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _enemiesPrefab: []
-  _speed: 5
 --- !u!95 &1702713805
 Animator:
   serializedVersion: 3
