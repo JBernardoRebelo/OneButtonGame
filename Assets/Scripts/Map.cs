@@ -16,7 +16,7 @@ public class Map : MonoBehaviour
     {
         _tileRot = Quaternion.identity;
 
-        _world = new Queue<GameObject>(5);
+        _world = new Queue<GameObject>(10);
 
         GameObject plataform = default;
 
@@ -44,9 +44,9 @@ public class Map : MonoBehaviour
             world.Dequeue();
         }
 
-        if (world.Count < 5)
+        if (world.Count < 10)
         {
-            _offset = new Vector3(0f, 0f, 10f);
+            _offset = new Vector3(0f, 0f, 18f);
 
             GameObject plataform = Instantiate(_pltfrm, _offset, _tileRot);
 
@@ -55,7 +55,7 @@ public class Map : MonoBehaviour
 
         }
 
-        else if (world.Count == 5)
+        else if (world.Count == 10)
         {
 
         }
