@@ -4,6 +4,7 @@ using UnityEngine;
 
 public enum PlayerState
 {
-    Sword,
-    Shield
+    Default,
+    Shield,
+    Sword
 }
