@@ -6,7 +6,6 @@ using UnityEngine;
 public class Plataform : MonoBehaviour, ISpawnable, IMovable
 {
     [SerializeField] private GameObject[] _enemiesPrefab;
-    [SerializeField] [Range(1, 5f)] private float _speed;
     [SerializeField] private float _playerDetectionRange;
 
     private Animator _anim;
@@ -14,6 +13,7 @@ public class Plataform : MonoBehaviour, ISpawnable, IMovable
     private GameObject _spawnedEnemy;
     private bool _move;
     private float _time;
+    private float _speed;
 
     public bool HasPlayer
     {
@@ -38,7 +38,6 @@ public class Plataform : MonoBehaviour, ISpawnable, IMovable
         _anim = GetComponent<Animator>();
         _hasPlayerBeen = false;
         _move = false;
-        Move();
     }
 
     private void FixedUpdate()
@@ -87,8 +86,9 @@ public class Plataform : MonoBehaviour, ISpawnable, IMovable
         _spawnedEnemy.transform.SetParent(gameObject.transform);
     }
 
-    public void Move()
+    public void Move(float speed = 1)
     {
+        _speed = speed;
         _time = 2f / _speed;
         _move = true;
     }

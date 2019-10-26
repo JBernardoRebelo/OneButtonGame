@@ -5,8 +5,13 @@ using UnityEngine;
 public class Map : MonoBehaviour
 {
     // Class vars
-    [SerializeField] private GameObject _pltfrm = default;
-    private Queue<GameObject> _world;
+    [SerializeField] private Plataform _pltfrm = default;
+    [SerializeField] private Player _player = null;
+    [Tooltip("This value determines how many times the player has to pass " +
+        "through the default state to increase the map speed")]
+    [SerializeField] private int _cyclesToIncrease;
+
+    private Queue<Plataform> _world;
     private Vector3 _offset;
     private Quaternion _tileRot;
 
@@ -16,9 +21,9 @@ public class Map : MonoBehaviour
     {
         _tileRot = Quaternion.identity;
 
-        _world = new Queue<GameObject>(10);
+        _world = new Queue<Plataform>(10);
 
-        GameObject plataform = default;
+        Plataform plataform = default;
 
         for (int i = 0; i < 10; i++)
         {
@@ -37,7 +42,7 @@ public class Map : MonoBehaviour
         EnqueueNewTile(_world);
     }
 
-    private void EnqueueNewTile(Queue<GameObject> world)
+    private void EnqueueNewTile(Queue<Plataform> world)
     {
         if (world.Peek() == null)
         {
@@ -48,7 +53,7 @@ public class Map : MonoBehaviour
         {
             _offset = new Vector3(0f, 0f, 18f);
 
-            GameObject plataform = Instantiate(_pltfrm, _offset, _tileRot);
+            Plataform plataform = Instantiate(_pltfrm, _offset, _tileRot);
 
             world.Enqueue(plataform);
 
@@ -57,7 +62,20 @@ public class Map : MonoBehaviour
 
         else if (world.Count == 10)
         {
-
+            foreach (Plataform p in world)
+            {
+                p.Move(PlataformMoveSpeed());
+            }
         }
+    }
+
+    private float PlataformMoveSpeed()
+    {
+        float speed = 1;
+
+        if (_player.StateCycles > _cyclesToIncrease)
+            speed = _player.StateCycles / _cyclesToIncrease;
+
+        return speed;
     }
 }
