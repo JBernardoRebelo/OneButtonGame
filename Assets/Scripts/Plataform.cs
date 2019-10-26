@@ -47,9 +47,9 @@ public class Plataform : MonoBehaviour, ISpawnable, IMovable
             DestroyPlataform();
         }
 
-        // Translate position to new position
         if (_move)
         {
+            // Translate position to new position
             if (_time > 0.01f)
             {
                 transform.Translate(-Vector3.forward *_speed * Time.deltaTime);
@@ -75,6 +75,7 @@ public class Plataform : MonoBehaviour, ISpawnable, IMovable
 
     public void DestroyObject()
     {
+        Debug.Log("Dead");
         Destroy(gameObject);
     }
 

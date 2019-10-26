@@ -37,7 +37,7 @@ public class Map : MonoBehaviour
         }
     }
 
-    void FixedUpdate()
+    private void Update()
     {
         EnqueueNewTile(_world);
     }

@@ -46,8 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemiesPrefab: []
-  _speed: 1
-  _playerDetectionRange: 1
+  _playerDetectionRange: 0.5
 --- !u!95 &3631927407379989497
 Animator:
   serializedVersion: 3
