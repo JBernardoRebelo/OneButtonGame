@@ -55,6 +55,7 @@ public class Map : MonoBehaviour
 
             Plataform plataform = Instantiate(_pltfrm, _offset, _tileRot);
 
+            plataform.Spawn();
             world.Enqueue(plataform);
 
 

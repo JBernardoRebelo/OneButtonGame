@@ -5,12 +5,12 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class Plataform : MonoBehaviour, ISpawnable, IMovable
 {
-    [SerializeField] private GameObject[] _enemiesPrefab;
+    [SerializeField] private Enemy _enemiesPrefab;
     [SerializeField] private float _playerDetectionRange;
 
     private Animator _anim;
     private bool _hasPlayerBeen;
-    private GameObject _spawnedEnemy;
+    private Enemy _spawnedEnemy;
     private bool _move;
     private float _time;
     private float _speed;
@@ -81,8 +81,7 @@ public class Plataform : MonoBehaviour, ISpawnable, IMovable
 
     public void Spawn()
     {
-        _spawnedEnemy = Instantiate(_enemiesPrefab[Random.Range(0, _enemiesPrefab.Length - 1)]
-            , Vector3.zero, transform.rotation);
+        _spawnedEnemy = Instantiate(_enemiesPrefab, transform);
 
         _spawnedEnemy.transform.SetParent(gameObject.transform);
     }

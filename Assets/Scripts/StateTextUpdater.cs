@@ -12,7 +12,6 @@ public class StateTextUpdater : MonoBehaviour
 
     public void UpdateState()
     {
-
         GameObject txtObj = Instantiate(_textPrefab, _holder);
         _txt = txtObj.GetComponent<StateText>();
         _txt.SetStateText(_player.State, _player.CurrentColor);

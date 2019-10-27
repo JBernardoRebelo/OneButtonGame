@@ -45,7 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f27185e82a2edc346a713a62f4beb761, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemiesPrefab: []
+  _enemiesPrefab: {fileID: 721561047949246754, guid: b507509b4898585419fdb49aec0c3b42,
+    type: 3}
   _playerDetectionRange: 0.5
 --- !u!95 &3631927407379989497
 Animator:
