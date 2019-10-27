@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     [SerializeField] private Color[]    _matColors;
     [SerializeField] private int        _playerMAXHP;
     [SerializeField] private GameObject _deathParticles;
+    [SerializeField] private float _invulnerabilityDuration = 1.0f;
 
     private PlayerState _currentChoice;
     private Color       _currentColor;
@@ -18,7 +19,30 @@ public class Player : MonoBehaviour
     private int         _numberOfStates;
     private int         _choice;
     private int         _playerHP;
+    private float       _invulnerabilityTimer;
+
     public UnityEvent   _choiceText;
+
+    private bool Invulnerable
+    {
+        get
+        {
+            if (_invulnerabilityTimer > 0.0f) return true;
+
+            return false;
+        }
+        set
+        {
+            if (value)
+            {
+                _invulnerabilityTimer = _invulnerabilityDuration;
+            }
+            else
+            {
+                _invulnerabilityTimer = 0.0f;
+            }
+        }
+    }
 
     public PlayerState State => _currentChoice;
     public Color CurrentColor => _currentColor;
@@ -41,6 +65,30 @@ public class Player : MonoBehaviour
     {
         UpdateState();
         CheckPlayerHP();
+        UpdateInvuln();
+    }
+
+    protected virtual void SetInvulnerabilitFX(bool b)
+    {
+        if (b)
+            _playerMat.color = Color.gray;
+        else
+            _playerMat.color = _currentColor;
+    }
+
+    private void UpdateInvuln()
+    {
+        if (_invulnerabilityTimer > 0.0f)
+        {
+            _invulnerabilityTimer -= Time.deltaTime;
+
+            SetInvulnerabilitFX((Mathf.FloorToInt(_invulnerabilityTimer * 10.0f) % 2) == 0);
+
+            if (_invulnerabilityTimer <= 0.0f)
+            {
+                SetInvulnerabilitFX(false);
+            }
+        }
     }
 
     private void CheckPlayerHP()
@@ -48,7 +96,7 @@ public class Player : MonoBehaviour
         if (_playerHP <= 0)
         {
             if (_deathParticles)
-                Instantiate(_deathParticles, transform);
+                Instantiate(_deathParticles, transform.position, transform.rotation);
             Destroy(gameObject);
         }
     }
@@ -71,6 +119,7 @@ public class Player : MonoBehaviour
     public void Damage()
     {
         _playerHP--;
+        Invulnerable = true;
     }
 
     private void UpdateMaterial()

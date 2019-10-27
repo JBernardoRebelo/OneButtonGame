@@ -19,6 +19,7 @@ public class Map : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         _tileRot = Quaternion.identity;
 
         _world = new Queue<Plataform>(10);
@@ -55,10 +56,11 @@ public class Map : MonoBehaviour
 
             Plataform plataform = Instantiate(_pltfrm, _offset, _tileRot);
 
-            plataform.Spawn();
+            if (Random.value <= .6f)
+            {
+                plataform.Spawn();
+            }
             world.Enqueue(plataform);
-
-
         }
 
         else if (world.Count == 10)

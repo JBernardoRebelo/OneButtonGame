@@ -139,3 +139,5 @@ MonoBehaviour:
   _degreesPerSecond: 45
   _amplitude: 0.1
   _frequency: 2
+  _deathParticles: {fileID: 901650853183241184, guid: e85751019f0108a44ac44483cdaf59fe,
+    type: 3}

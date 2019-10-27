@@ -7,7 +7,7 @@ public class LifePoint : MonoBehaviour
     [SerializeField] private float _degreesPerSecond = 15.0f;
     [SerializeField] private float _amplitude = 0.5f;
     [SerializeField] private float _frequency = 1f;
-    [SerializeField] private GameObject _deathParticles;
+    [SerializeField] private Particles _deathParticles;
 
     Vector3 posOffset = new Vector3();
     Vector3 tempPos = new Vector3();
@@ -32,7 +32,7 @@ public class LifePoint : MonoBehaviour
     public void KillHP()
     {
         if (_deathParticles)
-            Instantiate(_deathParticles, transform);
+            Instantiate(_deathParticles, transform.position, transform.rotation);
         Destroy(gameObject);
     }
 }

@@ -6,7 +6,7 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] private LayerMask _colLayer;
     [SerializeField] private Color[]   _matColors;
-    [SerializeField] private GameObject deathParticles;
+    public GameObject _deathParticles;
     [SerializeField] private float _playerDetectionRange;
     private PlayerState _killState;
     private Material    _enemyMat;
@@ -42,19 +42,23 @@ public class Enemy : MonoBehaviour
     {
         if (onPlayer)
         {
-            Player p = onPlayer.GetComponent<Player>();
+            Player p = onPlayer.GetComponentInParent<Player>();
 
-            //if (p.State != _killState)
-            //    p.Damage();
+            if (p)
+            {
+                if (p.State != _killState)
+                    p.Damage();
+            }
+
             KillEnemy();
         }
     }
 
     private void KillEnemy()
     {
-        if (deathParticles)
-            Instantiate(deathParticles, transform);
-
+        var o = Instantiate(_deathParticles, transform.position, transform.rotation);
+        ParticleSystem p = o.GetComponent<ParticleSystem>();
+        p.startColor = _enemyMat.color;
         Destroy(gameObject);
     }
 
