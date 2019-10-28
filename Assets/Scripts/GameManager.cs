@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IMovable
+public class GameManager : MonoBehaviour
 {
-    void Move(float speed = 1);
+    
 }

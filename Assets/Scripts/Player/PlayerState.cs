@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IMovable
+public enum PlayerState
 {
-    void Move(float speed = 1);
+    Default,
+    Shield,
+    Sword
 }

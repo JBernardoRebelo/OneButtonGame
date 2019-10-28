@@ -5,15 +5,15 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class Plataform : MonoBehaviour, ISpawnable, IMovable
 {
-    [SerializeField] private GameObject[] _enemiesPrefab;
-    [SerializeField] [Range(1, 5f)] private float _speed;
+    [SerializeField] private Enemy _enemiesPrefab;
     [SerializeField] private float _playerDetectionRange;
 
     private Animator _anim;
     private bool _hasPlayerBeen;
-    private GameObject _spawnedEnemy;
+    private Enemy _spawnedEnemy;
     private bool _move;
     private float _time;
+    private float _speed;
 
     public bool HasPlayer
     {
@@ -38,7 +38,6 @@ public class Plataform : MonoBehaviour, ISpawnable, IMovable
         _anim = GetComponent<Animator>();
         _hasPlayerBeen = false;
         _move = false;
-        Move();
     }
 
     private void FixedUpdate()
@@ -48,9 +47,9 @@ public class Plataform : MonoBehaviour, ISpawnable, IMovable
             DestroyPlataform();
         }
 
-        // Translate position to new position
         if (_move)
         {
+            // Translate position to new position
             if (_time > 0.01f)
             {
                 transform.Translate(-Vector3.forward *_speed * Time.deltaTime);
@@ -76,19 +75,20 @@ public class Plataform : MonoBehaviour, ISpawnable, IMovable
 
     public void DestroyObject()
     {
+        Debug.Log("Dead");
         Destroy(gameObject);
     }
 
     public void Spawn()
     {
-        _spawnedEnemy = Instantiate(_enemiesPrefab[Random.Range(0, _enemiesPrefab.Length - 1)]
-            , Vector3.zero, transform.rotation);
+        _spawnedEnemy = Instantiate(_enemiesPrefab, transform);
 
         _spawnedEnemy.transform.SetParent(gameObject.transform);
     }
 
-    public void Move()
+    public void Move(float speed = 1)
     {
+        _speed = speed;
         _time = 2f / _speed;
         _move = true;
     }
