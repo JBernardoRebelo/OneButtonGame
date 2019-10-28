@@ -111,7 +111,7 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {  
             // Sound
-            SoundManager.PlaySound(shapeShift, 10f, Random.Range(1.0f, 1.5f));
+            SoundManager.PlaySound(shapeShift, Random.Range(1.0f, 1.5f));
 
             _choice += 1;
             _currentChoice = (PlayerState)(_choice % _numberOfStates);
@@ -126,11 +126,10 @@ public class Player : MonoBehaviour
 
     public void Damage()
     {
-        _playerHP--;
-        Invulnerable = true;
-
         // Sound
         SoundManager.PlaySound(getHit, 10f, Random.Range(1.0f, 1.5f));
+        _playerHP--;
+        Invulnerable = true;
     }
 
     private void UpdateMaterial()
