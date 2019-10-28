@@ -60,7 +60,7 @@ public class Enemy : MonoBehaviour
     private void KillEnemy()
     {
         // Sound
-        SoundManager.PlaySound(enemyDeath, 10f, Random.Range(1.0f, 1.5f));
+        SoundManager.PlaySound(enemyDeath, Random.Range(1.0f, 1.5f));
 
         var o = Instantiate(_deathParticles, transform.position, transform.rotation);
         ParticleSystem p = o.GetComponent<ParticleSystem>();
