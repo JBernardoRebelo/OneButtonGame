@@ -126,7 +126,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 7258026744786316447}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1206050703}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 619a05521392576438f0cc50fc70ce35, type: 3}
@@ -417,6 +417,7 @@ GameObject:
   m_Component:
   - component: {fileID: 772695681}
   - component: {fileID: 772695682}
+  - component: {fileID: 772695683}
   m_Layer: 0
   m_Name: SoundManager
   m_TagString: Untagged
@@ -534,6 +535,14 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!81 &772695683
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 772695680}
+  m_Enabled: 1
 --- !u!1 &1076155708
 GameObject:
   m_ObjectHideFlags: 0
@@ -630,6 +639,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1206050703 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7258026744784450880, guid: 5ee88722f2ad2e04c949e0b2a57887be,
+    type: 3}
+  m_PrefabInstance: {fileID: 7258026744786316447}
+  m_PrefabAsset: {fileID: 0}
+--- !u!81 &1206050706
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1206050703}
+  m_Enabled: 1
 --- !u!1 &1357099143
 GameObject:
   m_ObjectHideFlags: 0
@@ -1172,6 +1195,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7258026744784450942, guid: 5ee88722f2ad2e04c949e0b2a57887be,
+        type: 3}
+      propertyPath: shapeShift
+      value: 
+      objectReference: {fileID: 8300000, guid: 1a7ded01cbbb78e4e9687b4c1ab49a8d, type: 3}
+    - target: {fileID: 7258026744784450942, guid: 5ee88722f2ad2e04c949e0b2a57887be,
+        type: 3}
+      propertyPath: enemyDeath
+      value: 
+      objectReference: {fileID: 8300000, guid: ce55eb835c511f84b8bae67a2c29776f, type: 3}
+    - target: {fileID: 7258026744784450942, guid: 5ee88722f2ad2e04c949e0b2a57887be,
+        type: 3}
+      propertyPath: getHit
+      value: 
+      objectReference: {fileID: 8300000, guid: fc1fdb5f485caa946aff7df844cddeec, type: 3}
     - target: {fileID: 7258026744502184221, guid: 5ee88722f2ad2e04c949e0b2a57887be,
         type: 3}
       propertyPath: m_Camera
