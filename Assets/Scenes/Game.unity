@@ -1172,6 +1172,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7258026744784450942, guid: 5ee88722f2ad2e04c949e0b2a57887be,
+        type: 3}
+      propertyPath: shapeShift
+      value: 
+      objectReference: {fileID: 8300000, guid: 1a7ded01cbbb78e4e9687b4c1ab49a8d, type: 3}
+    - target: {fileID: 7258026744784450942, guid: 5ee88722f2ad2e04c949e0b2a57887be,
+        type: 3}
+      propertyPath: enemyDeath
+      value: 
+      objectReference: {fileID: 8300000, guid: ce55eb835c511f84b8bae67a2c29776f, type: 3}
+    - target: {fileID: 7258026744784450942, guid: 5ee88722f2ad2e04c949e0b2a57887be,
+        type: 3}
+      propertyPath: getHit
+      value: 
+      objectReference: {fileID: 8300000, guid: fc1fdb5f485caa946aff7df844cddeec, type: 3}
     - target: {fileID: 7258026744502184221, guid: 5ee88722f2ad2e04c949e0b2a57887be,
         type: 3}
       propertyPath: m_Camera

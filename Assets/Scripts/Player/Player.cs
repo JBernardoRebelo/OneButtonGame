@@ -6,22 +6,27 @@ using UnityEngine.Events;
 public class Player : MonoBehaviour
 {
     // Colors for each player state
-    [SerializeField] private Color[]    _matColors;
-    [SerializeField] private int        _playerMAXHP;
+    [SerializeField] private Color[] _matColors;
+    [SerializeField] private int _playerMAXHP;
     [SerializeField] private GameObject _deathParticles;
     [SerializeField] private float _invulnerabilityDuration = 1.0f;
 
-    private PlayerState _currentChoice;
-    private Color       _currentColor;
-    // Reflects the current selected Player State
-    private Material    _playerMat;
-    // Size of PlayerState enum
-    private int         _numberOfStates;
-    private int         _choice;
-    private int         _playerHP;
-    private float       _invulnerabilityTimer;
+    // Sound
+    [Header("Sound")]
+    public AudioClip getHit;
+    public AudioClip shapeShift;
 
-    public UnityEvent   _choiceText;
+    private PlayerState _currentChoice;
+    private Color _currentColor;
+    // Reflects the current selected Player State
+    private Material _playerMat;
+    // Size of PlayerState enum
+    private int _numberOfStates;
+    private int _choice;
+    private int _playerHP;
+    private float _invulnerabilityTimer;
+
+    public UnityEvent _choiceText;
 
     private bool Invulnerable
     {
@@ -104,7 +109,10 @@ public class Player : MonoBehaviour
     private void UpdateState()
     {
         if (Input.GetKeyDown(KeyCode.Space))
-        {
+        {  
+            // Sound
+            SoundManager.PlaySound(shapeShift, 10f, Random.Range(1.0f, 1.5f));
+
             _choice += 1;
             _currentChoice = (PlayerState)(_choice % _numberOfStates);
 
@@ -120,6 +128,9 @@ public class Player : MonoBehaviour
     {
         _playerHP--;
         Invulnerable = true;
+
+        // Sound
+        SoundManager.PlaySound(getHit, 10f, Random.Range(1.0f, 1.5f));
     }
 
     private void UpdateMaterial()
