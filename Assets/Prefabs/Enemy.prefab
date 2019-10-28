@@ -429,3 +429,4 @@ MonoBehaviour:
   _deathParticles: {fileID: 3382164022758760257, guid: e85751019f0108a44ac44483cdaf59fe,
     type: 3}
   _playerDetectionRange: 1.27
+  enemyDeath: {fileID: 8300000, guid: ce55eb835c511f84b8bae67a2c29776f, type: 3}
