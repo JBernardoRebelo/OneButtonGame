@@ -22,7 +22,7 @@ public class Map : MonoBehaviour
 
         for (int i = 0; i < 10; i++)
         {
-            _offset = new Vector3(0f, 0f, (2* i));
+            _offset = new Vector3(0f, 0f, (2 * i));
 
             plataform = Instantiate(_pltfrm, _offset, _tileRot);
 
